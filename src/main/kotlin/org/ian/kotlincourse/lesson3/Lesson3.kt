@@ -1,5 +1,3 @@
-package org.ian.kotlincourse
-
 package org.ian.kotlincourse.lesson3
 
 import java.awt.Image
@@ -57,7 +55,7 @@ var numberOfTeams: Int = 10
 val taskList: String = "Задачи"
 
 //План эвакуации
-val evacuationPlan: Image ????
+val evacuationPlan: String = "путь к плану"
 
 //Список доступного оборудования
 var availableEquipment: String = ""
