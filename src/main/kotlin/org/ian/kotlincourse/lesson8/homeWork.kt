@@ -31,6 +31,8 @@ fun main() {
     //val phrase = "Объектно-ориентированное программирование"
     //val abbreviation = abbreviationOf(phrase)
     //println(abbreviation)
+
+    
 }
 
 fun string (string: String) : String{
@@ -115,3 +117,70 @@ fun abbreviationOf(phrase: String): String {
     }
     return abbreviation.uppercase()
 }
+
+
+//ext
+fun encrypt(str: String): String {
+    var strVar = str
+    if (str.length % 2 != 0) {
+        strVar += " "
+    }
+    var res = ""
+    for (i in 0 until (strVar.length) step 2) {
+        res += strVar[i + 1]
+        res += strVar[i]
+    }
+    return res
+}
+
+fun decrypt(str: String): String {
+    var res = ""
+    for (i in 0 until str.length step 2) {
+        res += str[i + 1]
+        res += str[i]
+    }
+    return res
+}
+
+//ext2
+fun getSign(number: Int): Int {
+    return when {
+        number > 0 -> 1
+        number < 0 -> -1
+        else -> 0
+    }
+}
+
+fun multiplicationTable(x: Int, y: Int) {
+    if (x == 0 || y == 0) throw Exception("Zero is not allowed")
+
+    val signX = getSign(x)
+    val signY = getSign(y)
+
+    var w = "${x * y}".length + 1 // width
+    if ("$x".length + 1 > w) {
+        w = "$x".length + 1
+    }
+
+    print(" ".repeat(w)) // default indent
+    var i = signX
+    while (i != x + signX) {
+        print("%${w}s".format(i))
+        i += signX
+    }
+    println()
+
+    var j = signY
+    while (j != y + signY) {
+        i = signX
+        print("%${w}s".format(j))
+        while (i != x + signX) {
+            print("%${w}s".format(i * j))
+            i += signX
+        }
+        j += signY
+        println()
+    }
+}
+
+
